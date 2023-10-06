@@ -1,0 +1,98 @@
+$red: #f64a4a;
+$orange: #fb7c58;
+$yellow: #f8cd65;
+$green: #a4ffaf;
+$almostWhite: #e6e5ea;
+$grey: #817d92;
+$darkGrey: #24232c;
+$veryDarkGrey: #18171f;
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin boxDimensions {
+  max-width: 34rem;
+  min-width: 18rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 90%;
+}
+
+.password-conditions {
+  @include flexCenter(column);
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 1.94rem;
+
+  .form-control {
+    // font-size: 0.92rem;
+    display: grid;
+    grid-template-columns: 1em auto;
+  }
+
+  label {
+    display: flex;
+    color: $almostWhite;
+    font-size: min(4vw, 1.125rem);
+    align-items: center;
+    gap: clamp(1rem, 3vw, 1.5rem);
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    background-color: $darkGrey;
+    margin: 0;
+    // font: inherit;
+    color: $red;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 0.15rem solid $almostWhite;
+    border-radius: 0;
+    cursor: pointer;
+
+    display: grid;
+    place-content: center;
+  }
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em $veryDarkGrey;
+    transform-origin: bottom;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+
+    // for Windows High Contrast Mode;
+    background-color: CanvasText;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: $green;
+  }
+
+  input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid black;
+    outline-offset: max(2px, 0.15em);
+  }
+
+  input[type="checkbox"]:hover {
+    border-color: $green;
+  }
+
+  .form-control + .form-control {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap");
+.password-conditions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 1.94rem;
+}
+.password-conditions .form-control {
+  display: grid;
+  grid-template-columns: 1em auto;
+}
+.password-conditions label {
+  display: flex;
+  color: #e6e5ea;
+  font-size: min(4vw, 1.125rem);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  cursor: pointer;
+}
+.password-conditions input[type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #24232c;
+  margin: 0;
+  color: #f64a4a;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.15rem solid #e6e5ea;
+  border-radius: 0;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+}
+.password-conditions input[type=checkbox]::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #18171f;
+  transform-origin: bottom;
+  -webkit-clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  background-color: CanvasText;
+}
+.password-conditions input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+.password-conditions input[type=checkbox]:checked {
+  background-color: #a4ffaf;
+}
+.password-conditions input[type=checkbox]:focus {
+  outline: max(2px, 0.15em) solid black;
+  outline-offset: max(2px, 0.15em);
+}
+.password-conditions input[type=checkbox]:hover {
+  border-color: #a4ffaf;
+}
+.password-conditions .form-control + .form-control {
+  margin-top: 1rem;
+}
+
+.inactive {
+  display: none;
+}
+
+.fade-out-color {
+  transition: color 0.2s ease-in-out;
+  color: #dc143c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+  touch-action: manipulation;
+}
+
+body {
+  background: linear-gradient(180deg, #14131b 1000%, #08070b 100%);
+  touch-action: manipulation;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 12vh;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: min(5vw, 24px);
+  color: #817d92;
+  line-height: normal;
+}
+
+.password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 34rem;
+  min-width: 18rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  width: 90%;
+  background-color: #24232c;
+  height: 4rem;
+  justify-content: space-between;
+  color: #e6e5ea;
+}
+.password-container .js-password {
+  font-size: clamp(0.8rem, 4.7vw, 2rem);
+}
+.password-container .password-container-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.password-container .password-container-right .js-copied-notification {
+  font-size: clamp(0.8rem, 4vw, 1rem);
+  color: #a4ffaf;
+}
+.password-container .password-container-right .copy-icon {
+  width: clamp(0.5rem, 5vw, 1.3rem);
+}
+.password-container .password-container-right .js-copy {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+@media (hover: hover) {
+  .password-container .password-container-right .js-copy:hover {
+    filter: brightness(0.1) invert(1);
+    transform: scale(0.9);
+  }
+  .password-container .password-container-right .js-copy:active {
+    filter: brightness(0.1) invert(1);
+    transform: scale(0.9);
+  }
+}
+
+.length-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 34rem;
+  min-width: 18rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  width: 90%;
+  background-color: #24232c;
+  justify-content: space-between;
+}
+.length-settings .title-and-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1.12rem;
+}
+.length-settings .section-name {
+  color: #e6e5ea;
+  font-size: clamp(1rem, 0.5rem + 2vw, 1.125rem);
+}
+.length-settings .js-length-number {
+  color: #a4ffaf;
+  font-size: 1.5rem;
+}
+.length-settings .length-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+.length-settings .length-slider .js-slider {
+  width: 100%;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #a4ffaf 0%, #18171f 0%);
+  height: 0.5rem;
+  cursor: pointer;
+}
+.length-settings .length-slider .js-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  border-radius: 10px;
+  background: #e6e5ea;
+  cursor: pointer;
+  -webkit-transition: background 0.1s ease-in-out, border 0.1s ease-in-out;
+  transition: background 0.1s ease-in-out, border 0.1s ease-in-out;
+}
+.length-settings .length-slider .js-slider::-webkit-slider-thumb:hover {
+  background: #18171f;
+  border-color: #a4ffaf;
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 2px;
+}
+.length-settings .strength-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #18171f;
+  justify-content: space-between;
+  width: 100%;
+  height: 3.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+.length-settings .content-left {
+  color: #817d92;
+}
+.length-settings .content-right {
+  color: #e6e5ea;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.length-settings .js-strength-name {
+  font-size: clamp(0.9rem, 4.5vw, 1rem);
+}
+.length-settings .strength-bars {
+  display: flex;
+  gap: 0.5rem;
+}
+.length-settings .empty-bar {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #e6e5ea;
+}
+.length-settings .bar-1 {
+  width: 0.625rem;
+  height: 1.75rem;
+}
+.length-settings .bar-2,
+.length-settings .bar-3,
+.length-settings .bar-4 {
+  width: 0.625rem;
+  height: 1.75rem;
+  background-color: transparent;
+}
+.length-settings .bar-red {
+  background-color: #f64a4a;
+}
+.length-settings .bar-orange {
+  background-color: #fb7c58;
+}
+.length-settings .bar-yellow {
+  background-color: #f8cd65;
+}
+.length-settings .bar-green {
+  background-color: #a4ffaf;
+}
+.length-settings .generate-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+.length-settings .generate-button .js-btn-generate {
+  background-color: #a4ffaf;
+  height: 3.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 0;
+  font-size: 1rem;
+  color: #24232c;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .length-settings .generate-button .js-btn-generate:hover {
+    background-color: transparent;
+    color: #a4ffaf;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #a4ffaf;
+    fill: #a4ffaf;
+  }
+}
+.length-settings .h-for-script {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.attribution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 34rem;
+  min-width: 18rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  width: 90%;
+  margin-top: 0.5rem;
+  gap: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.attribution .author {
+  color: #e6e5ea;
+  font-size: 0.9rem;
+}
+.attribution .author a {
+  text-decoration: none;
+  color: #a4ffaf;
+}
+.attribution .warning {
+  color: #f64a4a;
+}
+
+@media (max-width: 320px) {
+  .main-container {
+    margin-top: 5vh;
+  }
+}
+@media (min-width: 330px) and (max-width: 499px) {
+  .main-container {
+    margin-top: 1.5vh;
+  }
+}/*# sourceMappingURL=style.css.map */

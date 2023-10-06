@@ -1,0 +1,317 @@
+@use "styles-checkboxes";
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap");
+
+$red: #f64a4a;
+$orange: #fb7c58;
+$yellow: #f8cd65;
+$green: #a4ffaf;
+$almostWhite: #e6e5ea;
+$grey: #817d92;
+$darkGrey: #24232c;
+$veryDarkGrey: #18171f;
+
+// mixins
+
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin boxDimensions {
+  max-width: 34rem;
+  min-width: 18rem;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  width: 90%;
+}
+
+// class for inactivation of the checkbox/copied notification
+
+.inactive {
+  display: none;
+}
+
+// class for warning border
+
+.fade-out-color {
+  transition: color 0.2s ease-in-out;
+  color: #dc143c;
+}
+
+// scss
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: "JetBrains Mono", monospace;
+  touch-action: manipulation;
+}
+
+body {
+  background: linear-gradient(180deg, #14131b 1000%, #08070b 100%);
+  touch-action: manipulation;
+}
+
+.main-container {
+  @include flexCenter(column);
+  gap: 1rem;
+  margin-top: 12vh;
+  width: 100%;
+}
+
+.title {
+  @include flexCenter(row);
+  font-size: min(5vw, 24px);
+  color: #817d92;
+  line-height: normal;
+}
+
+.password-container {
+  @include flexCenter(row);
+  @include boxDimensions();
+  background-color: $darkGrey;
+  height: 4rem;
+  justify-content: space-between;
+  color: $almostWhite;
+
+  .js-password {
+    // color: $almostWhite;
+    font-size: clamp(0.8rem, 4.7vw, 2rem);
+  }
+
+  .password-container-right {
+    @include flexCenter(row);
+    gap: 0.5rem;
+
+    .js-copied-notification {
+      font-size: clamp(0.8rem, 4vw, 1rem);
+      color: $green;
+    }
+
+    .copy-icon {
+      width: clamp(0.5rem, 5vw, 1.3rem);
+    }
+
+    .js-copy {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    @media (hover: hover) {
+      .js-copy:hover {
+        filter: brightness(0.1) invert(1);
+        transform: scale(0.9);
+      }
+
+      .js-copy:active {
+        filter: brightness(0.1) invert(1);
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+.length-settings {
+  @include flexCenter(column);
+  @include boxDimensions();
+  background-color: $darkGrey;
+  justify-content: space-between;
+
+  .title-and-number {
+    @include flexCenter(row);
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 1.12rem;
+  }
+
+  .section-name {
+    color: $almostWhite;
+    font-size: clamp(1rem, 0.5rem + 2vw, 1.125rem);
+  }
+
+  .js-length-number {
+    color: $green;
+    font-size: 1.5rem;
+  }
+
+  .length-slider {
+    @include flexCenter(row);
+    width: 100%;
+    justify-content: center;
+
+    .js-slider {
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, $green 0%, $veryDarkGrey 0%);
+      height: 0.5rem;
+      cursor: pointer;
+    }
+
+    .js-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 23px;
+      height: 24px;
+      border: 0;
+      border-radius: 10px;
+      background: $almostWhite;
+      cursor: pointer;
+      transition: background 0.1s ease-in-out, border 0.1s ease-in-out;
+    }
+
+    .js-slider::-webkit-slider-thumb:hover {
+      background: $veryDarkGrey;
+      border-color: $green;
+      border-radius: 25px;
+      border-style: solid;
+      border-width: 2px;
+    }
+  }
+
+  .strength-container {
+    @include flexCenter(row);
+    // @include boxDimensions();
+    background-color: $veryDarkGrey;
+    justify-content: space-between;
+    width: 100%;
+    height: 3.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-left {
+    color: $grey;
+  }
+
+  .content-right {
+    color: $almostWhite;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .js-strength-name {
+    font-size: clamp(0.9rem, 4.5vw, 1rem);
+  }
+
+  .strength-bars {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .empty-bar {
+    border-style: solid;
+    border-width: 2px;
+    border-color: $almostWhite;
+  }
+
+  .bar-1 {
+    width: 0.625rem;
+    height: 1.75rem;
+  }
+
+  .bar-2,
+  .bar-3,
+  .bar-4 {
+    width: 0.625rem;
+    height: 1.75rem;
+    background-color: transparent;
+  }
+
+  .bar-red {
+    background-color: $red;
+  }
+
+  .bar-orange {
+    background-color: $orange;
+  }
+
+  .bar-yellow {
+    background-color: $yellow;
+  }
+
+  .bar-green {
+    background-color: $green;
+  }
+
+  .generate-button {
+    @include flexCenter(row);
+    width: 100%;
+
+    .js-btn-generate {
+      background-color: $green;
+      height: 3.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+      border: 0;
+      font-size: 1rem;
+      color: $darkGrey;
+      cursor: pointer;
+    }
+    @media (hover: hover) {
+      .js-btn-generate:hover {
+        background-color: transparent;
+        color: $green;
+        border-style: solid;
+        border-width: 2px;
+        border-color: $green;
+        fill: #a4ffaf;
+      }
+    }
+  }
+
+  .h-for-script {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.attribution {
+  @include flexCenter(column);
+  @include boxDimensions();
+  margin-top: 0.5rem;
+  gap: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+
+  .author {
+    color: $almostWhite;
+    font-size: 0.9rem;
+
+    a {
+      text-decoration: none;
+      color: $green;
+    }
+  }
+
+  .warning {
+    color: $red;
+  }
+}
+
+// 320px breakpoint for lower top margin;
+$breakpoint-320: 320px;
+@media (max-width: $breakpoint-320) {
+  .main-container {
+    margin-top: 5vh;
+  }
+}
+
+@media (min-width: 330px) and (max-width: 499px) {
+  .main-container {
+    margin-top: 1.5vh;
+  }
+}
