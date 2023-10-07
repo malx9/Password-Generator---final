@@ -141,6 +141,15 @@ function updateStrength() {
     bar3.classList.add("bar-green");
     bar4.classList.add("bar-green");
     strengthName.textContent = "STRONG";
+  } else if (checkedCount <= 3 && slider.value >= 15) {
+    bar1.classList.add("bar-red");
+
+    bar1.classList.remove("bar-green");
+    bar2.classList.remove("bar-green");
+    bar3.classList.remove("bar-green");
+    bar4.classList.remove("bar-green");
+
+    strengthName.textContent = "TOO WEAK!";
   }
 }
 
